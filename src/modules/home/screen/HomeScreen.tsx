@@ -10,15 +10,25 @@ import {
   Links,
 } from "../styles/home.styles";
 
-import { Moon, Sun } from "../../../shared/IconsLight/IconsLight";
+import { SobreContainer, CloseContainer } from "../styles/sobre.styles";
 
-import { useState } from "react";
+import { Moon, Sun } from "../../../shared/Icons/IconsLight";
+import { Close } from "../../../shared/Icons/IconClose";
+
+import { useState, type ReactElement } from "react";
 
 function HomeScreen() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const darkTxt = '#282828'
-  const lightTxt = '#8C8C8C'
+  const [about, setAbout] = useState("");
+
+  const toggleAbout = (e: any) => {
+    e.preventDefault();
+    setAbout('visible')
+  }
+
+  const darkTxt = "#282828";
+  const lightTxt = "#8C8C8C";
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -27,42 +37,70 @@ function HomeScreen() {
   return (
     <>
       <Body style={{ backgroundColor: isDarkMode ? "#747474" : "#F2F2F2" }}>
-        <HeaderDiv>
-          <IconLigh>
-            <div
-              onClick={() => {
-                console.log("clicado");
-                toggleTheme();
-              }}
-            >
-              {isDarkMode ? <Sun /> : <Moon />}
-              <p style={{ color: isDarkMode ? 'White' : 'Black' }}>Light</p>
-            </div>
-          </IconLigh>
-          <TextJob>
-            <h1 style={{ color: isDarkMode ? 'White' : darkTxt }}>
-              Desenvolvedor <br /> <span style={{ color: isDarkMode ? darkTxt : lightTxt }}>Web</span>
-            </h1>
-          </TextJob>
-        </HeaderDiv>
-              
-        <CentralDiv>
-          <SemiCircle color={isDarkMode ? 'White' : 'Black' } />
-          <SemiCircle2 color={isDarkMode ? 'White' : 'Black' } />
-          <ImgDiv>
-            <div> </div>
-            <h1 style={{ color: isDarkMode ? darkTxt : lightTxt }}>
-              Kaue <br />
-              <span style={{ color: isDarkMode ? 'White' : darkTxt }}>Bastos</span>
-            </h1>
-          </ImgDiv>
-        </CentralDiv>
+        <div
+          style={{ position: "relative", height: "100vh", filter: about === '' ? '' : 'blur(4px)' }}
+        >
+          <HeaderDiv>
+            <IconLigh>
+              <div
+                onClick={() => {
+                  console.log("clicado");
+                  toggleTheme();
+                }}
+              >
+                {isDarkMode ? <Sun /> : <Moon />}
+                <p style={{ color: isDarkMode ? "White" : "Black" }}>Light</p>
+              </div>
+            </IconLigh>
+            <TextJob>
+              <h1 style={{ color: isDarkMode ? "White" : darkTxt }}>
+                Desenvolvedor <br />{" "}
+                <span style={{ color: isDarkMode ? darkTxt : lightTxt }}>
+                  Web
+                </span>
+              </h1>
+            </TextJob>
+          </HeaderDiv>
 
-        <Links>
-          <a href="" style={{color: isDarkMode ? 'White' : '#525252'}}>Sobre</a>
-          <a href="" style={{color: isDarkMode ? 'White' : '#525252'}}>Skills</a>
-          <a href="" style={{color: isDarkMode ? 'White' : '#525252'}}>Projetos</a>
-        </Links>
+          <CentralDiv>
+            <SemiCircle color={isDarkMode ? "White" : "Black"} />
+            <SemiCircle2 color={isDarkMode ? "White" : "Black"} />
+            <ImgDiv>
+              <div> </div>
+              <h1 style={{ color: isDarkMode ? darkTxt : lightTxt }}>
+                Kaue <br />
+                <span style={{ color: isDarkMode ? "White" : darkTxt }}>
+                  Bastos
+                </span>
+              </h1>
+            </ImgDiv>
+          </CentralDiv>
+
+          <Links>
+            <a
+              href=""
+              onClick={(e) => toggleAbout(e)}
+              style={{ color: isDarkMode ? "White" : "#525252" }}
+            >
+              Sobre
+            </a>
+            <a href="" style={{ color: isDarkMode ? "White" : "#525252" }}>
+              Skills
+            </a>
+            <a href="" style={{ color: isDarkMode ? "White" : "#525252" }}>
+              Projetos
+            </a>
+          </Links>
+        </div>
+        {about === "visible" && (
+          <SobreContainer
+            style={{ backgroundColor: isDarkMode ? "#747474" : "#EDEDED" }}
+          >
+            <CloseContainer onClick={() => setAbout("")}>
+              <Close color={isDarkMode ? "White" : "Black"} />
+            </CloseContainer>
+          </SobreContainer>
+        )}
       </Body>
     </>
   );

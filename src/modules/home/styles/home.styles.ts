@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
-import mePng from "../../../../public/me.png";
-import mePng720 from "../../../../public/me720px.png";
+import mePng from "../../../../src/assets/me.png";
+import mePng720 from "../../../../src/assets/me720px.png";
 
 const rotate = keyframes`
   from {
@@ -66,7 +66,7 @@ export const CentralDiv = styled.div`
 export const SemiCircle = styled.div<{ color?: string }>`
   width: 340px;
   height: 170px;
-  border: 3px dashed ${({ color }) => color || "black"};
+  border: 4px solid ${({ color }) => color || "black"};
   clip-path: inset(0 0 50% 0);
   border-radius: 170px 170px 0 0;
   animation: ${rotate} 10s linear infinite;
@@ -83,7 +83,7 @@ export const SemiCircle = styled.div<{ color?: string }>`
 export const SemiCircle2 = styled.div<{ color?: string }>`
   width: 320px;
   height: 160px;
-  border: 3px dashed ${({ color }) => color || "black"};
+  border: 4px dashed ${({ color }) => color || "black"};
   clip-path: inset(0 0 50% 0);
   border-radius: 160px 160px 0 0;
   animation: ${rotate2} 6s linear infinite;
