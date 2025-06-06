@@ -32,7 +32,6 @@ export const HeaderDiv = styled.div`
   align-items: center;
   padding: 5px;
   gap: 10px;
-
   @media (min-width: 720px) {
     padding: 40px;
   }
@@ -40,7 +39,7 @@ export const HeaderDiv = styled.div`
 
 export const TextJob = styled.div`
   h1 {
-    font-size: 2rem;
+    font-size: 3vh;
     font-weight: 500;
   }
 `;
@@ -58,9 +57,16 @@ export const CentralDiv = styled.div`
   align-items: center;
   height: 30vh;
   position: relative;
-  @media (min-width: 720px) {
-    height: 25vh;
-  }
+`;
+
+export const BackgroundCircles = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
 `;
 
 export const SemiCircle = styled.div<{ color?: string }>`
@@ -72,6 +78,9 @@ export const SemiCircle = styled.div<{ color?: string }>`
   animation: ${rotate} 10s linear infinite;
   transform-origin: center bottom;
   position: absolute;
+  bottom: 0;
+  left: 10;
+  transform: translateX(-50%);
 
   @media (min-width: 720px) {
     width: 66vh;
@@ -88,6 +97,10 @@ export const SemiCircle2 = styled.div<{ color?: string }>`
   border-radius: 160px 160px 0 0;
   animation: ${rotate2} 6s linear infinite;
   transform-origin: center bottom;
+  position: absolute;
+  bottom: 0;
+  left: 10;
+  transform: translateX(-50%);
 
   @media (min-width: 720px) {
     width: 62vh;
@@ -126,7 +139,7 @@ export const ImgDiv = styled.div`
       height: 50vh;
     }
     h1 {
-      font-size: 2.4rem;
+      font-size: 5vh;
       font-weight: 500;
     }
   }
@@ -145,5 +158,6 @@ export const Links = styled.div`
   @media (min-width: 720px) {
     top: 4%;
     right: 5%;
+    font-size: 2.2vh;
   }
 `;
