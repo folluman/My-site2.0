@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ImageBio from "../../../assets/imageBio.png";
 import ImageBio720 from "../../../assets/imageBio720.png";
 
-export const SobreContainer = styled.div`
+export const ContainerView = styled.div`
   position: fixed;
   top: 5%;
   left: 5%;
@@ -12,6 +12,8 @@ export const SobreContainer = styled.div`
   z-index: 10;
   width: 90%;
   height: 90%;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 export const CloseContainer = styled.div`
@@ -57,13 +59,15 @@ export const BioContainer = styled.div`
 `;
 
 export const BackgroundImage = styled.div`
-  height: 230px;
-  width: 230px;
+  height: 25vh;
+  width: 25vh;
   background-image: url(${ImageBio});
+  background-size: 25vh;
   background-repeat: no-repeat;
   @media (min-width: 720px) {
     height: 430px;
-    width: 430px;
+    width: 420px;
     background-image: url(${ImageBio720});
+    background-size: 50vh;
   }
 `;
