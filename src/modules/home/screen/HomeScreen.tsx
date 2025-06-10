@@ -9,24 +9,29 @@ import {
   TextJob,
   Links,
 } from "../styles/home.styles";
-import {
-  BackgroundImage,
-  BioContainer,
-} from "../styles/sobre.styles";
+import { SkillsContainer } from "../styles/skills.styles";
+import { BackgroundImage, BioContainer } from "../styles/sobre.styles";
 import Container from "../../../shared/LinksContainers/Containers";
 import { Moon, Sun } from "../../../shared/Icons/IconsLight";
 import { Linkedin, GitHub } from "../../../shared/Icons/IconsBio";
 import { useState, useEffect } from "react";
+import { IconDownload } from "../../../shared/Icons/IconDownload";
 
 function HomeScreen() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [about, setAbout] = useState(false);
-  const [skills, setSkills] = useState('')
+  const [skills, setSkills] = useState(false);
   const [isContainerVisible, setIsContainerVisible] = useState(false);
 
   const toggleAbout = (e: React.MouseEvent) => {
     e.preventDefault();
     setAbout(true);
+    setIsContainerVisible(true);
+  };
+
+  const toggleSkills = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setSkills(true);
     setIsContainerVisible(true);
   };
 
@@ -38,9 +43,9 @@ function HomeScreen() {
   };
 
   useEffect(() => {
-    document.body.style.overflow = isContainerVisible ? 'hidden' : 'auto';
+    document.body.style.overflow = isContainerVisible ? "hidden" : "auto";
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [isContainerVisible]);
 
@@ -72,6 +77,20 @@ function HomeScreen() {
               </span>
             </h1>
           </TextJob>
+          <div style={{ position: "absolute", bottom: "5vh", right: "5vw" }}>
+            <button
+              style={{
+                display: "flex",
+                alignItems: "center",
+                background: "none",
+                border: "none",
+                gap: "4px",
+                color: isDarkMode ? "White" : "#525252" 
+              }}
+            >
+              <IconDownload color={isDarkMode ? "White" : "Black"}/> Currículo
+            </button>
+          </div>
         </HeaderDiv>
 
         <CentralDiv>
@@ -96,7 +115,11 @@ function HomeScreen() {
           >
             Sobre
           </a>
-          <a href="#" style={{ color: isDarkMode ? "White" : "#525252" }}>
+          <a
+            href="#"
+            style={{ color: isDarkMode ? "White" : "#525252" }}
+            onClick={toggleSkills}
+          >
             Skills
           </a>
           <a href="#" style={{ color: isDarkMode ? "White" : "#525252" }}>
@@ -106,7 +129,7 @@ function HomeScreen() {
       </div>
 
       {about && (
-        <Container 
+        <Container
           light={isDarkMode}
           onClose={() => {
             setAbout(false);
@@ -120,14 +143,14 @@ function HomeScreen() {
             <div>
               <h2>.Bio</h2>
               <p>
-                Jovem com experiência em criação de sites, automações e
-                análise de dados. Atua com Python, JavaScript, HTML, CSS, SQL
-                e Power BI, desenvolvendo soluções eficientes e
-                personalizadas. No backend, utiliza Express para criar APIs e
-                integrar sistemas. Possui interesse em inteligência artificial
-                e ciência de dados, áreas nas quais vem aprofundando seus
-                conhecimentos. Está em constante evolução técnica, sempre
-                buscando aplicar soluções criativas aos desafios dos projetos.
+                Jovem com experiência em criação de sites, automações e análise
+                de dados. Atua com Python, JavaScript, HTML, CSS, SQL e Power
+                BI, desenvolvendo soluções eficientes e personalizadas. No
+                backend, utiliza Express para criar APIs e integrar sistemas.
+                Possui interesse em inteligência artificial e ciência de dados,
+                áreas nas quais vem aprofundando seus conhecimentos. Está em
+                constante evolução técnica, sempre buscando aplicar soluções
+                criativas aos desafios dos projetos.
               </p>
               <div
                 style={{
@@ -137,10 +160,18 @@ function HomeScreen() {
                   marginTop: "2vh",
                 }}
               >
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Linkedin color={isDarkMode ? "White" : "Black"} />
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <GitHub color={isDarkMode ? "White" : "Black"} />
                 </a>
               </div>
@@ -149,7 +180,52 @@ function HomeScreen() {
         </Container>
       )}
 
-      {}
+      {skills && (
+        <Container
+          light={isDarkMode}
+          onClose={() => {
+            setSkills(false);
+            setIsContainerVisible(false);
+          }}
+        >
+          <SkillsContainer color={isDarkMode ? "#C4C3C3" : "#747474"} style={{ color: isDarkMode ? "White" : "Black" }}>
+            <div className="skills_title">
+              <h2>Skills</h2>
+            </div>
+            <div className="skills_content">
+              <div>
+                <h3>Comunicação</h3>
+                <p>
+                  Sou uma pessoa aberta a conversas, o que me permite me
+                  comunicar de forma clara e acessível com diferentes perfis.
+                  Essa abertura facilita o trabalho em equipe e contribui para
+                  um ambiente colaborativo, onde todos se sentem à vontade para
+                  trocar ideias e seguir na mesma direção.
+                </p>
+              </div>
+              <div>
+                <h3>Trabalho em equipe</h3>
+                <p>
+                  Gosto de trabalhar em equipe e estou sempre aberto a aprender
+                  com diferentes ideias e perspectivas. Acredito que colaborar
+                  com pessoas de diferentes áreas enriquece os projetos e
+                  contribui para alcançar bons resultados em grupo.
+                </p>
+              </div>
+              <div>
+                <h3>Adaptabilidade</h3>
+                <p>
+                  Durante a minha vida desenvolvi resiliência, pois acredito que
+                  é nas dificuldades que mais se aprende. Essa postura me ajuda
+                  a enfrentar situações dinâmicas com confiança, buscando
+                  soluções criativas e me ajustando rapidamente a novas
+                  circunstâncias.
+                </p>
+              </div>
+            </div>
+          </SkillsContainer>
+        </Container>
+      )}
     </Body>
   );
 }
