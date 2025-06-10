@@ -10,17 +10,21 @@ import {
   Links,
 } from "../styles/home.styles";
 import { SkillsContainer } from "../styles/skills.styles";
-import { BackgroundImage, BioContainer } from "../styles/sobre.styles";
+import {
+  BackgroundImage,
+  BioContainer,
+} from "../styles/sobre.styles";
 import Container from "../../../shared/LinksContainers/Containers";
 import { Moon, Sun } from "../../../shared/Icons/IconsLight";
 import { Linkedin, GitHub } from "../../../shared/Icons/IconsBio";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { IconDownload } from "../../../shared/Icons/IconDownload";
 
 function HomeScreen() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [about, setAbout] = useState(false);
   const [skills, setSkills] = useState(false);
+  const [projects, setProjects] = useState(false);
   const [isContainerVisible, setIsContainerVisible] = useState(false);
 
   const toggleAbout = (e: React.MouseEvent) => {
@@ -35,21 +39,18 @@ function HomeScreen() {
     setIsContainerVisible(true);
   };
 
+  const toggleProjects = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setProjects(true);
+    setIsContainerVisible(true);
+  };
+
   const darkTxt = "#282828";
   const lightTxt = "#8C8C8C";
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
-
-  useEffect(() => {
-    document.body.style.overflow = isContainerVisible ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isContainerVisible]);
-
-  const handleDownload = () => {};
 
   return (
     <Body style={{ backgroundColor: isDarkMode ? "#747474" : "#F2F2F2" }}>
@@ -65,7 +66,7 @@ function HomeScreen() {
         <HeaderDiv>
           <IconLigh>
             <div onClick={toggleTheme} style={{ cursor: "pointer" }}>
-              {isDarkMode ? <Sun /> : <Moon />}
+              {isDarkMode ? <Moon /> : <Sun />}
               <p style={{ color: isDarkMode ? "White" : "Black" }}>
                 {isDarkMode ? "Dark" : "Light"}
               </p>
@@ -141,7 +142,11 @@ function HomeScreen() {
           >
             Skills
           </a>
-          <a href="#" style={{ color: isDarkMode ? "White" : "#525252" }}>
+          <a
+            href="#"
+            style={{ color: isDarkMode ? "White" : "#525252" }}
+            onClick={toggleProjects}
+          >
             Projetos
           </a>
         </Links>
@@ -247,6 +252,16 @@ function HomeScreen() {
             </div>
           </SkillsContainer>
         </Container>
+      )}
+
+      {projects && (
+        <Container
+          light={isDarkMode}
+          onClose={() => {
+            setProjects(false);
+            setIsContainerVisible(false);
+          }}
+        ></Container>
       )}
     </Body>
   );

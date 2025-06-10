@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SkillsContainer = styled.div<{color?: string}>`
+export const SkillsContainer = styled.div<{ color?: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,12 +15,12 @@ export const SkillsContainer = styled.div<{color?: string}>`
     display: flex;
     flex-direction: column;
     gap: 5vw;
-    
+
     div {
       max-width: 320px;
       text-align: justify;
       padding: 10px;
-      hyphens: auto;
+
       h3 {
         font-size: 24px;
         position: relative;
@@ -32,19 +32,20 @@ export const SkillsContainer = styled.div<{color?: string}>`
           left: 0;
           bottom: 2px;
           width: 50%;
-          height: 2px; 
-          background-color: ${(props) => props.color}; 
+          height: 2px;
+          background-color: ${(props) => props.color};
         }
       }
       p {
         margin-top: 10px;
         font-weight: 300;
         line-height: 20px;
+        hyphens: auto;
       }
     }
 
     @media (min-width: 1080px) {
-        flex-direction: row;
+      flex-direction: row;
     }
   }
 `;
