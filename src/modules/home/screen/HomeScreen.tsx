@@ -49,6 +49,8 @@ function HomeScreen() {
     };
   }, [isContainerVisible]);
 
+  const handleDownload = () => {};
+
   return (
     <Body style={{ backgroundColor: isDarkMode ? "#747474" : "#F2F2F2" }}>
       <div
@@ -78,18 +80,35 @@ function HomeScreen() {
             </h1>
           </TextJob>
           <div style={{ position: "absolute", bottom: "5vh", right: "5vw" }}>
-            <button
+            <a
               style={{
                 display: "flex",
                 alignItems: "center",
-                background: "none",
-                border: "none",
                 gap: "4px",
-                color: isDarkMode ? "White" : "#525252" 
+                color: isDarkMode ? "White" : "#525252",
+                textDecoration: "none",
+              }}
+              href="/MY_SITE/public/Curriculo_Kaue_Bastos.pdf"
+              download="Curriculo_Kaue_Bastos"
+              onClick={(e) => {
+                e.preventDefault();
+                window.open("/Curriculo_Kaue_Bastos.pdf", "_blank");
+                fetch("/Curriculo_Kaue_Bastos.pdf")
+                  .then((response) => response.blob())
+                  .then((blob) => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = "Curriculo_Kaue_Bastos.pdf";
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                  });
               }}
             >
-              <IconDownload color={isDarkMode ? "White" : "Black"}/> Currículo
-            </button>
+              <IconDownload color={isDarkMode ? "White" : "Black"} /> Currículo
+            </a>
           </div>
         </HeaderDiv>
 
@@ -188,7 +207,10 @@ function HomeScreen() {
             setIsContainerVisible(false);
           }}
         >
-          <SkillsContainer color={isDarkMode ? "#C4C3C3" : "#747474"} style={{ color: isDarkMode ? "White" : "Black" }}>
+          <SkillsContainer
+            color={isDarkMode ? "#C4C3C3" : "#747474"}
+            style={{ color: isDarkMode ? "White" : "Black" }}
+          >
             <div className="skills_title">
               <h2>Skills</h2>
             </div>
