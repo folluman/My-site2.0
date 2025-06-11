@@ -10,15 +10,15 @@ import {
   Links,
 } from "../styles/home.styles";
 import { SkillsContainer } from "../styles/skills.styles";
-import {
-  BackgroundImage,
-  BioContainer,
-} from "../styles/sobre.styles";
+import { BackgroundImage, BioContainer } from "../styles/sobre.styles";
 import Container from "../../../shared/LinksContainers/Containers";
 import { Moon, Sun } from "../../../shared/Icons/IconsLight";
 import { Linkedin, GitHub } from "../../../shared/Icons/IconsBio";
 import { useState } from "react";
 import { IconDownload } from "../../../shared/Icons/IconDownload";
+import { ProjectsContainer } from "../styles/projetos.styles";
+import ImgColetaCerta from "../../../assets/coletaCertaimg.png";
+import PrototipoApp from '../../../assets/protótipoApp.png'
 
 function HomeScreen() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -261,7 +261,47 @@ function HomeScreen() {
             setProjects(false);
             setIsContainerVisible(false);
           }}
-        ></Container>
+        >
+          <ProjectsContainer style={{ color: isDarkMode ? "White" : "Black" }}>
+            <div className="projects_div">
+              <div className="">
+                <h2>Projetos</h2>
+              </div>
+              <div className="project__content">
+                <img src={ImgColetaCerta} alt="" />
+                <div>
+                  <h3>Coleta Certa: Aprendendo a Separar o Lixo Brincando!</h3>
+                  <p>
+                    Desenvolvi a gamificação "Coleta Certa", uma iniciativa
+                    voltada para a educação ambiental, com o objetivo de ensinar
+                    crianças sobre a correta separação do lixo e a importância
+                    da reciclagem.
+                  </p>
+                  <a href="">Link do jogo</a>
+                </div>
+              </div>
+              <div className="project__content reverse">
+                <img src={PrototipoApp} alt="" />
+                <div>
+                  <h3>
+                    Design do aplicativo para reserva de veículos da frota
+                  </h3>
+                  <p>
+                    Durante o meu período na empresa Volkswagen Caminhões e
+                    Ônibus, desenvolvi uma ideia de aplicativo voltado para a
+                    reserva de veículos da frota, o qual o formulário era feito
+                    em papel, em que o objetivo era ajudar os funcionários da
+                    empresa a reservar carros ou caronas para se deslocarem do
+                    escritório para à fábrica e vice-versa. Desenvolvi o
+                    fluxograma de jornadas e o design do aplicativo de acordo
+                    com as regras de Marketing da empresa.
+                  </p>
+                  <a href="">Link do protótipo</a>
+                </div>
+              </div>
+            </div>
+          </ProjectsContainer>
+        </Container>
       )}
     </Body>
   );

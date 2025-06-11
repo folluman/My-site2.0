@@ -45,6 +45,10 @@ export const BioContainer = styled.div`
   }
 
   @media (min-width: 720px) {
+    p {
+    font-size: 1.4rem;
+    line-height: 30px;
+  }
   }
 
   @media (min-width: 1080px) {
@@ -53,6 +57,7 @@ export const BioContainer = styled.div`
     justify-content: center;
     padding: 10vh;
     p {
+      font-size: 1.2rem;
       line-height: 30px;
     }
   }
@@ -68,6 +73,6 @@ export const BackgroundImage = styled.div`
     height: 430px;
     width: 420px;
     background-image: url(${ImageBio720});
-    background-size: 50vh;
+    background-size: 400px;
   }
 `;

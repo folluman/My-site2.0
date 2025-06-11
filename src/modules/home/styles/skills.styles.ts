@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const extendLine = keyframes`
+from {
+  width: 0;
+}
+
+to {
+  width: 50%
+}
+`
 
 export const SkillsContainer = styled.div<{ color?: string }>`
   display: flex;
@@ -31,9 +41,9 @@ export const SkillsContainer = styled.div<{ color?: string }>`
           position: absolute;
           left: 0;
           bottom: 2px;
-          width: 50%;
           height: 2px;
           background-color: ${(props) => props.color};
+          animation: ${extendLine} 1s linear forwards;
         }
       }
       p {

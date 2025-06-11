@@ -21,6 +21,7 @@ const rotate2 = keyframes`
   }
 `;
 
+
 export const Body = styled.div`
   width: 100%;
   min-height: 100vh;
