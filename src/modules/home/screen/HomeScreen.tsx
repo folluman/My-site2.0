@@ -18,7 +18,9 @@ import { useState } from "react";
 import { IconDownload } from "../../../shared/Icons/IconDownload";
 import { ProjectsContainer } from "../styles/projetos.styles";
 import ImgColetaCerta from "../../../assets/coletaCertaimg.png";
-import PrototipoApp from '../../../assets/protótipoApp.png'
+import PrototipoApp from "../../../assets/protótipoApp.png";
+import EdChurrascoImg from "../../../assets/edChurrasco.svg";
+import ApemegImg from "../../../assets/apemeg.png";
 
 function HomeScreen() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -277,7 +279,14 @@ function HomeScreen() {
                     crianças sobre a correta separação do lixo e a importância
                     da reciclagem.
                   </p>
-                  <a href="">Link do jogo</a>
+                  <a
+                    href="https://www.construct.net/en/free-online-games/coleta-52502/play"
+                    style={{ color: isDarkMode ? "White" : "#525252" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Link do jogo
+                  </a>
                 </div>
               </div>
               <div className="project__content reverse">
@@ -296,7 +305,50 @@ function HomeScreen() {
                     fluxograma de jornadas e o design do aplicativo de acordo
                     com as regras de Marketing da empresa.
                   </p>
-                  <a href="">Link do protótipo</a>
+                  <a
+                    href="https://www.figma.com/design/27BM2HcZOYr7divzeDEwg0/aplicativo-p--gerenciamento-de-frota?node-id=6-2&p=f&t=zGIFtAJxMYC9T7LE-0"
+                    style={{ color: isDarkMode ? "White" : "#525252" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Link do protótipo
+                  </a>
+                </div>
+              </div>
+              <div className="project__content">
+                <img src={EdChurrascoImg} alt="" />
+                <div>
+                  <h3>Site ED Churrasco</h3>
+                  <p>
+                    Ladding page com o intuito de divulgar os churrascos e
+                    eventos feitos pelo churrasqueiro Edilson.
+                  </p>
+                  <a
+                    href="https://edchurrasco.com/"
+                    style={{ color: isDarkMode ? "White" : "#525252" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Link do site
+                  </a>
+                </div>
+              </div>
+              <div className="project__content reverse">
+                <img src={ApemegImg} alt="" />
+                <div>
+                  <h3>Site da APEMEG</h3>
+                  <p>
+                    Ladding page com o intuito de ajudar a Associação de
+                    Pequenos e Microempreendedores de Guarulhos.
+                  </p>
+                  <a
+                    href="https://apemeg.vercel.app/"
+                    style={{ color: isDarkMode ? "White" : "#525252" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Link do site
+                  </a>
                 </div>
               </div>
             </div>

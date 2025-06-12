@@ -28,7 +28,11 @@ export const ProjectsContainer = styled.div`
     align-items: center;
     gap: 5vh;
     max-width: 80vw;
+    margin-bottom: 40px;
 
+    img {
+      max-width: 300px
+    }
     @media (min-width: 1080px) {
       flex-direction: row;
     }
@@ -51,7 +55,6 @@ export const ProjectsContainer = styled.div`
     }
 
     a {
-      color: gray;
       font-size: 1.2rem;
     }
 
