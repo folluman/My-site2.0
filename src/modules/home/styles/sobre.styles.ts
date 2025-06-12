@@ -15,7 +15,7 @@ export const ContainerView = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   max-width: 100%;
-  max-height: 100%
+  max-height: 100%;
 `;
 
 export const CloseContainer = styled.div`
