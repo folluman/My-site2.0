@@ -76,7 +76,7 @@ function HomeScreen() {
           </IconLigh>
           <TextJob>
             <h1 style={{ color: isDarkMode ? "White" : darkTxt }}>
-              Desenvolvedor <br />{" "}
+              Desenvolvedor <br />
               <span style={{ color: isDarkMode ? darkTxt : lightTxt }}>
                 Web
               </span>
@@ -187,14 +187,14 @@ function HomeScreen() {
                 }}
               >
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/kau%C3%AA-bastos-528860201/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Linkedin color={isDarkMode ? "White" : "Black"} />
                 </a>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/folluman"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
